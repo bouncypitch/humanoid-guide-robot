@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>AGI House Twin</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: full-bleed 3D canvas, one floating control panel (bottom sheet on phones). Single dark look by choice: a scan reads best on a dark ground. */
+:root {
+  --bg: #0d1014;
+  --panel: rgba(20, 25, 31, 0.92);
+  --line: #2a323c;
+  --fg: #e6ebf0;
+  --muted: #8b97a4;
+  --restroom: #4cc2ff;
+  --kitchen: #ffb347;
+  --pin: #f2f5f8;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body { background: var(--bg); color: var(--fg); font-family: var(--sans); overflow: hidden; }
+#stage { position: fixed; inset: 0; }
+#stage canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+#labels { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+.lbl { position: absolute; transform: translate(-50%, -130%); font: 500 11px/1.2 var(--mono); color: var(--pin);
+  background: rgba(13,16,20,.72); border: 1px solid var(--line); padding: 2px 6px; border-radius: 4px; white-space: nowrap; }
+.lbl.goal { border-color: currentColor; font-weight: 600; }
+.lbl.restroom { color: var(--restroom); }
+.lbl.kitchen { color: var(--kitchen); }
+#panel { position: fixed; top: calc(16px + env(safe-area-inset-top, 0px)); left: max(16px, env(safe-area-inset-left, 0px));
+  width: 300px; max-width: calc(100% - 32px); background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+  padding: 16px; display: grid; gap: 14px; backdrop-filter: blur(6px); }
+h1 { margin: 0; font-size: 18px; font-weight: 600; text-wrap: balance; }
+.sub { margin: 4px 0 0; color: var(--muted); font-size: 12.5px; line-height: 1.45; }
+.sec { display: grid; gap: 8px; }
+.eyebrow { font: 500 10.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.route { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; padding: 8px 10px;
+  border: 1px solid var(--line); border-radius: 8px; cursor: pointer; background: transparent; color: var(--fg); font: inherit; text-align: left; }
+.route[aria-pressed="false"] { opacity: .45; }
+.route:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--restroom); outline-offset: 2px; }
+.sw { width: 18px; height: 4px; border-radius: 2px; }
+.route .len { font: 500 12px var(--mono); font-variant-numeric: tabular-nums; color: var(--muted); }
+.route .nm { font-size: 13.5px; }
+.route small { display: block; color: var(--muted); font-size: 11.5px; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 13px; }
+.row output { font: 500 12px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+input[type=range] { width: 100%; accent-color: var(--restroom); }
+.btns { display: flex; flex-wrap: wrap; gap: 6px; }
+.btns button { flex: 1 1 auto; background: transparent; color: var(--fg); border: 1px solid var(--line); border-radius: 6px;
+  padding: 6px 8px; font: 500 12px var(--sans); cursor: pointer; }
+.btns button:hover, .route:hover { border-color: var(--muted); }
+.foot { font: 400 11px/1.45 var(--mono); color: var(--muted); }
+#toggle { display: none; }
+@media (max-width: 640px) {
+  #panel { top: auto; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); left: max(12px, env(safe-area-inset-left, 0px));
+    right: max(12px, env(safe-area-inset-right, 0px)); width: auto; max-width: none; max-height: 55vh; overflow-y: auto; padding: 12px; gap: 10px; }
+  #panel.min .body { display: none; }
+  #toggle { display: inline-block; background: transparent; border: 1px solid var(--line); color: var(--fg); border-radius: 6px; padding: 4px 8px; font: 500 12px var(--sans); }
+  .head { display: flex; justify-content: space-between; align-items: start; gap: 8px; }
+}
+#loading { position: fixed; inset: 0; display: grid; place-items: center; color: var(--muted); font: 500 13px var(--mono); }
+</style>
+</head>
+<body>
+
+
+<div id="stage"></div>
+<div id="labels"></div>
+<div id="loading">Loading the scan…</div>
+
+<aside id="panel">
+  <div class="head">
+    <div>
+      <h1>AGI House Twin</h1>
+      <p class="sub">iPhone RGB-D walkthrough, fused and levelled. Pins are landmarks Gemma named on-device. Lines are A* routes the K1 would walk.</p>
+    </div>
+    <button id="toggle" type="button" aria-expanded="true">Hide</button>
+  </div>
+  <div class="body" style="display:grid;gap:14px">
+    <div class="sec">
+      <div class="eyebrow">Demo routes from the front entrance</div>
+      <button class="route" id="r-restroom" type="button" aria-pressed="true">
+        <span class="sw" style="background:var(--restroom)"></span>
+        <span><span class="nm">Restroom</span><small>via stairs checkpoint</small></span>
+        <span class="len" id="len-restroom">–</span>
+      </button>
+      <button class="route" id="r-kitchen" type="button" aria-pressed="true">
+        <span class="sw" style="background:var(--kitchen)"></span>
+        <span><span class="nm">Kitchen</span><small>via stairs checkpoint</small></span>
+        <span class="len" id="len-kitchen">–</span>
+      </button>
+    </div>
+    <div class="sec">
+      <div class="row"><label for="cut">Ceiling cut</label><output id="cutv">1.6 m</output></div>
+      <input id="cut" type="range" min="0.3" max="2.3" step="0.05" value="1.6">
+      <div class="row"><label for="psize">Point size</label><output id="psizev">2</output></div>
+      <input id="psize" type="range" min="1" max="5" step="0.5" value="2">
+      <div class="row"><label for="showlbl">Landmark labels</label><input id="showlbl" type="checkbox" checked></div>
+    </div>
+    <div class="sec">
+      <div class="eyebrow">View</div>
+      <div class="btns">
+        <button type="button" data-view="top">Floor plan</button>
+        <button type="button" data-view="orbit">3D overview</button>
+        <button type="button" data-view="entrance">From entrance</button>
+      </div>
+    </div>
+    <div class="foot" id="stats">Drag to orbit · right-drag or two fingers to pan · scroll to zoom</div>
+  </div>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+<script src="data.js"></script>
+<script>
+(function () {
+  const meta = window.SCAN_META;
+  const stage = document.getElementById('stage');
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  stage.appendChild(renderer.domElement);
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0d1014);
+  const camera = new THREE.PerspectiveCamera(50, 1, 0.05, 400);
+  camera.up.set(0, 0, 1);
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.screenSpacePanning = true;
+
+  // ---- points: uint16 quantised xyz, then rgb bytes ----
+  const raw = atob(window.SCAN_B64);
+  const bytes = new Uint8Array(raw.length);
+  for (let i = 0; i < raw.length; i++) bytes[i] = raw.charCodeAt(i);
+  const n = meta.n, lo = meta.lo, hi = meta.hi;
+  const q = new Uint16Array(bytes.buffer, 0, n * 3);
+  const rgb = new Uint8Array(bytes.buffer, n * 6, n * 3);
+  const pos = new Float32Array(n * 3);
+  for (let i = 0; i < n * 3; i++) { const a = i % 3; pos[i] = lo[a] + (q[i] / 65535) * (hi[a] - lo[a]); }
+  const col = new Float32Array(n * 3);
+  for (let i = 0; i < n * 3; i++) col[i] = rgb[i] / 255;
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  const mat = new THREE.PointsMaterial({ size: 2, sizeAttenuation: false, vertexColors: true });
+  const cutUniform = { value: 1.6 };
+  mat.onBeforeCompile = (sh) => {
+    sh.uniforms.uCut = cutUniform;
+    sh.vertexShader = 'varying float vZ;\n' + sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\nvZ = position.z;');
+    sh.fragmentShader = 'uniform float uCut;\nvarying float vZ;\n' + sh.fragmentShader.replace('void main() {', 'void main() {\nif (vZ > uCut) discard;');
+  };
+  scene.add(new THREE.Points(geo, mat));
+
+  // floor grid for scale (1 m)
+  const cx = (lo[0] + hi[0]) / 2, cy = (lo[1] + hi[1]) / 2;
+  const span = Math.max(hi[0] - lo[0], hi[1] - lo[1]);
+  const grid = new THREE.GridHelper(Math.ceil(span / 5) * 5 + 10, Math.ceil(span / 5) * 5 + 10, 0x2a323c, 0x1a2027);
+  grid.rotation.x = Math.PI / 2; grid.position.set(Math.round(cx), Math.round(cy), -0.01);
+  scene.add(grid);
+
+  // ---- routes ----
+  const routeColor = { restroom: 0x4cc2ff, kitchen: 0xffb347 };
+  const routeObjs = {};
+  for (const [name, r] of Object.entries(meta.routes)) {
+    if (!r) continue;
+    const pts = r.pts.map(p => new THREE.Vector3(p[0], p[1], 0.12));
+    const curve = new THREE.CatmullRomCurve3(pts, false, 'centripetal', 0.2);
+    const tube = new THREE.Mesh(new THREE.TubeGeometry(curve, Math.max(64, pts.length * 3), 0.07, 8, false),
+      new THREE.MeshBasicMaterial({ color: routeColor[name] }));
+    const end = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.35, 0.04, 32), new THREE.MeshBasicMaterial({ color: routeColor[name] }));
+    end.rotation.x = Math.PI / 2; end.position.copy(pts[pts.length - 1]);
+    const g = new THREE.Group(); g.add(tube); g.add(end); scene.add(g);
+    routeObjs[name] = g;
+    document.getElementById('len-' + name).textContent = r.length_m.toFixed(1) + ' m';
+  }
+  // start marker
+  const ent = meta.places.find(p => p.id === 'front_entrance');
+  if (ent) {
+    const s = new THREE.Mesh(new THREE.RingGeometry(0.3, 0.45, 40), new THREE.MeshBasicMaterial({ color: 0xf2f5f8, side: THREE.DoubleSide }));
+    s.position.set(ent.xy[0], ent.xy[1], 0.13); scene.add(s);
+  }
+
+  // ---- landmark pins + HTML labels ----
+  const labelsEl = document.getElementById('labels');
+  const pinMat = new THREE.MeshBasicMaterial({ color: 0xf2f5f8 });
+  const pins = meta.places.map(p => {
+    const z = Math.max(0.4, Math.min(2.0, p.z + 0.35));
+    const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, z, 6), pinMat);
+    stem.rotation.x = Math.PI / 2; stem.position.set(p.obj[0], p.obj[1], z / 2); scene.add(stem);
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.09, 12, 12), pinMat);
+    head.position.set(p.obj[0], p.obj[1], z); scene.add(head);
+    const el = document.createElement('div');
+    const goal = p.id === 'restroom' ? 'restroom' : p.id === 'kitchen' ? 'kitchen' : '';
+    el.className = 'lbl' + (goal ? ' goal ' + goal : '');
+    el.textContent = p.id === 'front_entrance' ? 'front entrance (start)' : p.name;
+    el.title = p.desc; labelsEl.appendChild(el);
+    return { v: new THREE.Vector3(p.obj[0], p.obj[1], z), el };
+  });
+
+  // ---- views ----
+  function setView(kind) {
+    const tgt = new THREE.Vector3(cx, cy, 0);
+    if (kind === 'top') { camera.position.set(cx, cy - 0.01, span * 1.35); }
+    else if (kind === 'entrance' && ent) {
+      const k = meta.places.find(p => p.id === 'stairs') || { xy: [cx, cy] };
+      camera.position.set(ent.xy[0] - (k.xy[0] - ent.xy[0]) * 0.25, ent.xy[1] - (k.xy[1] - ent.xy[1]) * 0.25, 1.3);
+      tgt.set(k.xy[0], k.xy[1], 0.8);
+    } else { camera.position.set(cx - span * 0.55, cy - span * 0.75, span * 0.6); }
+    controls.target.copy(tgt); controls.update();
+  }
+  document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => setView(b.dataset.view)));
+
+  // ---- controls ----
+  const cut = document.getElementById('cut'), cutv = document.getElementById('cutv');
+  cut.addEventListener('input', () => { cutUniform.value = +cut.value; cutv.textContent = (+cut.value).toFixed(2) + ' m'; });
+  const ps = document.getElementById('psize'), psv = document.getElementById('psizev');
+  ps.addEventListener('input', () => { mat.size = +ps.value; psv.textContent = ps.value; });
+  const showlbl = document.getElementById('showlbl');
+  showlbl.addEventListener('change', () => { labelsEl.hidden = !showlbl.checked; });
+  for (const name of Object.keys(routeObjs)) {
+    const b = document.getElementById('r-' + name);
+    b.addEventListener('click', () => {
+      const on = b.getAttribute('aria-pressed') !== 'true';
+      b.setAttribute('aria-pressed', String(on)); routeObjs[name].visible = on;
+    });
+  }
+  const panel = document.getElementById('panel'), toggle = document.getElementById('toggle');
+  toggle.addEventListener('click', () => {
+    const min = panel.classList.toggle('min');
+    toggle.textContent = min ? 'Show' : 'Hide'; toggle.setAttribute('aria-expanded', String(!min));
+  });
+  document.getElementById('stats').textContent =
+    n.toLocaleString() + ' points · ' + meta.places.length + ' landmarks · 5 cm floor grid. Drag to orbit, right-drag or two fingers to pan, scroll to zoom.';
+
+  // ---- render loop ----
+  function resize() {
+    const w = stage.clientWidth, h = stage.clientHeight;
+    renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', resize); resize();
+  setView('orbit');
+  const v = new THREE.Vector3();
+  function frame() {
+    controls.update();
+    renderer.render(scene, camera);
+    if (!labelsEl.hidden) {
+      const w = stage.clientWidth, h = stage.clientHeight;
+      for (const p of pins) {
+        v.copy(p.v).project(camera);
+        const vis = v.z < 1 && Math.abs(v.x) < 1.1 && Math.abs(v.y) < 1.1;
+        p.el.hidden = !vis;
+        if (vis) { p.el.style.left = ((v.x + 1) / 2 * w) + 'px'; p.el.style.top = ((1 - v.y) / 2 * h) + 'px'; }
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+  document.getElementById('loading').hidden = true;
+  frame();
+})();
+</script>
+
+</body>
+</html>

@@ -5,7 +5,7 @@ A talking humanoid robot that escorts elderly guests anywhere in the house.
 
 ![The K1 walking a guest from the front door to the kitchen in the AGI House digital twin](docs/media/wayfinder_walk.gif)
 
-**▶ [Watch the 3-minute demo video](https://github.com/bouncypitch/wayfinder/releases/download/v1.0-hackathon/wayfinder_demo_video.mp4)** (simulation in the scanned AGI House twin; voices synthesized)
+**▶ [Watch the 3-minute demo video](https://github.com/bouncypitch/wayfinder/releases/download/v1.0-hackathon/wayfinder_demo_video.mp4)** (simulation in the scanned AGI House twin; voices by ElevenLabs, video only) · **[Project site](https://bouncypitch.github.io/wayfinder/)**
 
 | One phone walkthrough becomes a 3D twin | People are masked out of the map | Drop it anywhere: 23/30 arrive |
 |---|---|---|
@@ -85,7 +85,7 @@ brain are described in `docs/SETUP.md`.
 - The Android app builds and passes its unit tests, but was not run on a phone on the day; the capture used
   for the demo came from the iOS app.
 - The walk GIF and demo films are renders of the simulated K1 (MuJoCo, Booster's walking policy)
-  composited into the scanned house. Voices in the films are synthesized; the guest is not a real person.
+  composited into the scanned house. Voices in the demo video were re-recorded with ElevenLabs (cloud TTS, used for the video only); the guest is not a real person.
   The live robot speaks with on-device text-to-speech.
 - Raw captures, videos and landmark crops contain people and are not in this repository (see `.gitignore`).
   Images sent to World Labs for the photoreal twin were face-blurred on-device first (`tools/blur_faces.py`).

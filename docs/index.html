@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Wayfinder</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single scrolling story, one numbered step per section (the steps really are a pipeline), media full width inside a 1120px column. Dark ground so scans and depth maps read. */
+:root {
+  --bg: #0b0e12; --raise: #131820; --line: #232b35; --fg: #e8edf2; --muted: #8e9aa7;
+  --cyan: #4cc2ff; --amber: #ffb347; --violet: #8b5cf6; --ok: #78dc8c; --wait: #e6c229;
+  --display: "Sora", "IBM Plex Sans", system-ui, sans-serif;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: var(--cyan); }
+a:focus-visible, button:focus-visible, video:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+
+header.hero { padding-block: 56px 32px; display: grid; gap: 18px; }
+.kicker { font: 500 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--cyan); }
+h1 { font-family: var(--display); font-weight: 700; font-size: clamp(32px, 6vw, 60px); line-height: 1.05; margin: 0; text-wrap: balance; max-width: 18ch; }
+.lede { color: var(--muted); font-size: 18px; max-width: 64ch; margin: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { font: 500 12.5px var(--mono); padding: 4px 10px; border: 1px solid var(--line); border-radius: 99px; color: var(--fg); }
+.chip.on { border-color: var(--ok); color: var(--ok); }
+.hero video { width: 100%; border-radius: 12px; border: 1px solid var(--line); background: #000; aspect-ratio: 16/9; }
+
+nav.steps { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: rgba(11,14,18,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+nav.steps .wrap { display: flex; gap: 4px; overflow-x: auto; padding-block: 10px; scrollbar-width: none; }
+nav.steps a { flex: 0 0 auto; font: 500 13px var(--sans); color: var(--muted); text-decoration: none; padding: 6px 10px; border-radius: 6px; white-space: nowrap; }
+nav.steps a:hover { color: var(--fg); background: var(--raise); }
+nav.steps a span { font-family: var(--mono); color: var(--cyan); margin-right: 6px; }
+
+section.step { padding-block: 64px 8px; display: grid; gap: 20px; scroll-margin-top: 60px; }
+.step-head { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; align-items: baseline; }
+.num { font: 600 15px var(--mono); color: var(--cyan); grid-row: span 2; padding-top: 6px; }
+h2 { font-family: var(--display); font-weight: 600; font-size: clamp(24px, 3.4vw, 34px); margin: 0; line-height: 1.15; text-wrap: balance; }
+.step-head p { margin: 0; color: var(--muted); max-width: 70ch; }
+.status { font: 500 12px var(--mono); padding: 2px 9px; border-radius: 99px; border: 1px solid currentColor; margin-left: 10px; vertical-align: middle; white-space: nowrap; }
+.status.done { color: var(--ok); } .status.wip { color: var(--wait); }
+
+.media { display: grid; gap: 16px; }
+.media.two { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+.media.four { grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+figure { margin: 0; background: var(--raise); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; min-width: 0; }
+figure img, figure video { display: block; width: 100%; max-width: 100%; height: auto; background: #000; }
+figure video { aspect-ratio: 16/9; }
+figcaption { padding: 10px 14px; font-size: 14px; color: var(--muted); }
+figcaption b { color: var(--fg); font-weight: 500; }
+
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.fact { background: var(--raise); padding: 14px 16px; display: grid; gap: 2px; }
+.fact b { font: 600 24px var(--display); font-variant-numeric: tabular-nums; }
+.fact span { font-size: 13px; color: var(--muted); }
+
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font: 500 11px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); background: var(--raise); }
+tr:last-child td { border-bottom: 0; }
+td.n { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+td.cap { text-transform: capitalize; }
+.pill { font: 500 12px var(--mono); padding: 1px 8px; border-radius: 99px; border: 1px solid currentColor; color: var(--ok); }
+tr.star td:first-child::after { content: "demo route"; font: 500 10.5px var(--mono); color: var(--amber); border: 1px solid var(--amber); border-radius: 99px; padding: 0 6px; margin-left: 8px; text-transform: none; }
+
+.callout { border: 1px solid var(--line); border-left: 3px solid var(--wait); background: var(--raise); border-radius: 8px; padding: 14px 16px; font-size: 15px; max-width: 80ch; }
+.callout b { color: var(--fg); }
+ul.plain { margin: 0; padding-left: 18px; color: var(--muted); max-width: 76ch; }
+ul.plain li { margin: 4px 0; }
+ul.plain b { color: var(--fg); font-weight: 500; }
+
+.flow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font: 500 13.5px var(--sans); }
+.flow span { padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--raise); }
+.flow i { font-style: normal; color: var(--muted); }
+.flow .device { border-color: var(--ok); }
+
+footer { padding-block: 64px 48px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); margin-top: 64px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+.story { display: grid; gap: 10px; max-width: 72ch; }
+.story p { margin: 0; color: var(--muted); font-size: 17px; }
+.story p b { color: var(--fg); font-weight: 500; }
+.lines { display: grid; gap: 6px; font-size: 15px; border-left: 2px solid var(--line); padding-left: 14px; max-width: 72ch; }
+.lines span { color: var(--muted); } .lines b { font-weight: 500; color: var(--fg); }
+.part { font: 500 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-top: 72px; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+.sub-note { margin: 0; color: var(--muted); font-size: 14px; }
+.label-sim { font: 500 11.5px var(--mono); color: var(--wait); }
+</style>
+</head>
+<body>
+
+
+<header class="hero wrap">
+  <div class="kicker">Google Gemma Hardware Hackathon · AGI House · Physical AI</div>
+  <h1>Wayfinder</h1>
+  <p class="lede"><b style="color:var(--fg);font-weight:500">Drop it anywhere in a home. It finds its way, and talks you through it.</b> Wayfinder is a digital twin of AGI House, built from a single phone walkthrough, plus a Booster K1 humanoid that uses it to help guests find their way around this big house. Drop the robot anywhere inside: it works out where it is from its own depth camera, talks with the guest, confirms where they want to go, and walks them there, describing what they pass. Gemma runs on-device, with no cloud.</p>
+  <div class="chips">
+    <span class="chip on">Gemma on-device, no cloud</span>
+    <span class="chip">10/10 routes walked in the twin</span>
+    <span class="chip">23/30 random drops found their goal</span>
+    <span class="chip">18 landmarks named by Gemma</span>
+    <a class="chip" href="https://github.com/bouncypitch/wayfinder" style="text-decoration:none">Open source on GitHub</a>
+  </div>
+  <video src="assets/wayfinder_hero.mp4" poster="assets/wayfinder_hero.jpg" controls playsinline preload="metadata" aria-label="Wayfinder demo film: a guest asks the K1 for the kitchen and it walks her there, narrating"></video>
+  <p class="sub-note">Turn the sound on. The guest arrives at the front door, asks for the kitchen, and the K1 walks her 36 m there, narrating the house as it goes. Simulation; walking shown at 2x. Voices in this video are by ElevenLabs; the live robot speaks with on-device text-to-speech.</p>
+</header>
+
+<nav class="steps" aria-label="Sections">
+  <div class="wrap">
+    <a href="#why"><span>·</span>Why</a>
+    <a href="#anywhere"><span>2</span>It finds itself</a>
+    <a href="#sim"><span>3</span>It walks you there</a>
+    <a href="#capture"><span>4</span>Scan once</a>
+    <a href="#people"><span>5</span>People removed</a>
+    <a href="#twin"><span>6</span>3D twin</a>
+    <a href="#landmarks"><span>7</span>Landmarks</a>
+    <a href="#robot"><span>8</span>Real K1</a>
+    <a href="#how"><span>·</span>How it works</a>
+    <a href="#talk"><span>·</span>Talk to it</a>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section class="step" id="why">
+    <div class="story">
+      <p>Picture a guest arriving at a big house they've never been to. Maybe they're older, or have low vision, or just don't know the layout. <b>"Where's the restroom?"</b> shouldn't mean wandering through strangers' rooms.</p>
+      <p>We built a robot host for that moment. Scan the house once with a phone. After that, a humanoid can be dropped anywhere inside, figure out where it is, and walk any guest to any room, talking them through the way.</p>
+    </div>
+  </section>
+
+  <div class="part">The demo</div>
+
+
+
+  <section class="step" id="anywhere">
+    <div class="step-head"><div class="num">02</div>
+      <h2>Drop it anywhere: it finds itself <span class="status done">measured in the twin</span></h2>
+      <p>No tags, no beacons, no known start. The robot spins once and matches its depth view against the scanned floor plan. It uses Gemma's landmark sightings to tell look-alike rooms apart, and asks you if it's still unsure. Then it keeps correcting drift every second as it walks.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>23 / 30</b><span>random drops reached a random goal on their own</span></div>
+      <div class="fact"><b>24 / 30</b><span>when it may ask the guest which room it's in</span></div>
+      <div class="fact"><b>0.02 m</b><span>median localization error</span></div>
+      <div class="fact"><b>12 → 23</b><span>successes over one afternoon of fixes</span></div>
+    </div>
+    <div class="media two">
+      <figure><img src="assets/nav_heatmap.jpg" alt="Map of 30 random drop points coloured by whether the robot reached its goal" loading="lazy">
+        <figcaption><b>30 random drops in the AGI House twin.</b> Each dot is a start point; colour shows whether the robot reached its assigned goal.</figcaption></figure>
+      <figure><img src="assets/nav_progress.jpg" alt="Bar chart: 12, 17, 20 and 23 of 30 trials arrived across four versions" loading="lazy">
+        <figcaption><b>What moved the number.</b> A full 360° spin, Gemma's landmark vote, then clearance-aware routes with a final look-around.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="step" id="sim">
+    <div class="step-head"><div class="num">03</div>
+      <h2>It walks you there <span class="status done">all routes arrived in the twin</span></h2>
+      <p>The K1 runs Booster's own walking policy in MuJoCo, using the same velocity commands as the real robot. Each frame of the robot is placed into the scanned AGI House using depth, so walls and furniture hide it correctly. Routes start at the front entrance; the robot waves on arrival. Videos play at 5x.</p>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Destination</th><th>Route</th><th>Walking time</th><th>Result</th></tr></thead>
+        <tbody>
+<tr class="star"><td class="cap">restroom</td><td class="n">19.7 m</td><td class="n">69 s</td><td><span class="pill">arrived</span></td></tr>
+<tr class="star"><td class="cap">kitchen</td><td class="n">32.9 m</td><td class="n">113 s</td><td><span class="pill">arrived</span></td></tr>
+<tr><td class="cap">trash can</td><td class="n">7.5 m</td><td class="n">28 s</td><td><span class="pill">arrived</span></td></tr>
+<tr><td class="cap">stairs</td><td class="n">19.5 m</td><td class="n">69 s</td><td><span class="pill">arrived</span></td></tr>
+<tr><td class="cap">bar</td><td class="n">22.2 m</td><td class="n">77 s</td><td><span class="pill">arrived</span></td></tr>
+<tr><td class="cap">TV</td><td class="n">8.6 m</td><td class="n">33 s</td><td><span class="pill">arrived</span></td></tr>
+<tr><td class="cap">couch 3</td><td class="n">14.5 m</td><td class="n">53 s</td><td><span class="pill">arrived</span></td></tr>
+<tr><td class="cap">couch 2</td><td class="n">20.2 m</td><td class="n">72 s</td><td><span class="pill">arrived</span></td></tr>
+<tr><td class="cap">dining table</td><td class="n">29.6 m</td><td class="n">102 s</td><td><span class="pill">arrived</span></td></tr>
+<tr><td class="cap">fireplace</td><td class="n">32.0 m</td><td class="n">111 s</td><td><span class="pill">arrived</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="media two">
+<figure id="route-restroom"><video src="assets/chase_restroom.mp4" poster="assets/chase_restroom.jpg" controls muted playsinline preload="none"></video><figcaption><b>Entrance → restroom.</b> 19.7 m route, 69 s walking, arrived.</figcaption></figure>
+<figure id="route-kitchen"><video src="assets/chase_kitchen.mp4" poster="assets/chase_kitchen.jpg" controls muted playsinline preload="none"></video><figcaption><b>Entrance → kitchen.</b> 32.9 m route, 113 s walking, arrived.</figcaption></figure>
+<figure id="route-trash_can"><video src="assets/chase_trash_can.mp4" poster="assets/chase_trash_can.jpg" controls muted playsinline preload="none"></video><figcaption><b>Entrance → trash can.</b> 7.5 m route, 28 s walking, arrived.</figcaption></figure>
+<figure id="route-stairs"><video src="assets/chase_stairs.mp4" poster="assets/chase_stairs.jpg" controls muted playsinline preload="none"></video><figcaption><b>Entrance → stairs.</b> 19.5 m route, 69 s walking, arrived.</figcaption></figure>
+<figure id="route-bar"><video src="assets/chase_bar.mp4" poster="assets/chase_bar.jpg" controls muted playsinline preload="none"></video><figcaption><b>Entrance → bar.</b> 22.2 m route, 77 s walking, arrived.</figcaption></figure>
+<figure id="route-tv"><video src="assets/chase_tv.mp4" poster="assets/chase_tv.jpg" controls muted playsinline preload="none"></video><figcaption><b>Entrance → TV.</b> 8.6 m route, 33 s walking, arrived.</figcaption></figure>
+<figure id="route-couch_3"><video src="assets/chase_couch_3.mp4" poster="assets/chase_couch_3.jpg" controls muted playsinline preload="none"></video><figcaption><b>Entrance → couch 3.</b> 14.5 m route, 53 s walking, arrived.</figcaption></figure>
+<figure id="route-couch_2"><video src="assets/chase_couch_2.mp4" poster="assets/chase_couch_2.jpg" controls muted playsinline preload="none"></video><figcaption><b>Entrance → couch 2.</b> 20.2 m route, 72 s walking, arrived.</figcaption></figure>
+<figure id="route-dining_table"><video src="assets/chase_dining_table.mp4" poster="assets/chase_dining_table.jpg" controls muted playsinline preload="none"></video><figcaption><b>Entrance → dining table.</b> 29.6 m route, 102 s walking, arrived.</figcaption></figure>
+<figure id="route-fireplace"><video src="assets/chase_fireplace.mp4" poster="assets/chase_fireplace.jpg" controls muted playsinline preload="none"></video><figcaption><b>Entrance → fireplace.</b> 32.0 m route, 111 s walking, arrived.</figcaption></figure>
+    </div>
+  </section>
+
+  <div class="part">How we built it in a day</div>
+
+  <section class="step" id="capture">
+    <div class="step-head"><div class="num">04</div>
+      <h2>Scan the house once, with a phone <span class="status done">done</span></h2>
+      <p>Our open-source capture apps record colour, depth and camera pose as you walk. The mobile app uses ARKit with LiDAR. The Android app uses ARCore Depth on Pixel; it builds but hasn't been tested on a phone yet. Both write the same session format, and both can stream live to the laptop over Wi-Fi.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>7:06</b><span>walkthrough</span></div>
+      <div class="fact"><b>287 m</b><span>walked</span></div>
+      <div class="fact"><b>1,258</b><span>RGB-D keyframes</span></div>
+      <div class="fact"><b>316 m²</b><span>walkable floor mapped</span></div>
+    </div>
+    <div class="media two">
+      <figure><img src="assets/walkthrough_poster.jpg" alt="Walkthrough: floor plan with path, RGB and depth panels" loading="lazy">
+        <figcaption><b>Walkthrough replay.</b> Floor plan building up from the scan, with the phone's colour and depth views.</figcaption></figure>
+      <figure><img src="assets/04_walkthrough_90pct.jpg" alt="Walkthrough at 90 percent: floor plan with path and labelled landmarks, RGB and depth panels" loading="lazy">
+        <figcaption><b>90% through.</b> Path coloured from start to now; named landmarks pinned on the map.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="step" id="people">
+    <div class="step-head"><div class="num">05</div>
+      <h2>People are masked out <span class="status done">done</span></h2>
+      <p>The house was full of hackers during the scan. The phone segments every person in every keyframe, shown here in solid purple. Those pixels never enter the map, so the twin keeps walls and furniture, not the crowd. The same masks blur people in any image that leaves the laptop.</p>
+    </div>
+    <figure><video src="assets/people_masking.mp4" poster="assets/people_poster.jpg" controls muted playsinline preload="none"></video>
+      <figcaption><b>Person masks during the walkthrough.</b> Left: colour frame. Right: depth. Purple = person, removed from the map.</figcaption></figure>
+    <div class="media four">
+      <figure><img src="assets/people_0.jpg" alt="Colour and depth with people as purple silhouettes" loading="lazy"></figure>
+      <figure><img src="assets/people_1.jpg" alt="Colour and depth with people as purple silhouettes" loading="lazy"></figure>
+      <figure><img src="assets/people_2.jpg" alt="Colour and depth with people as purple silhouettes" loading="lazy"></figure>
+      <figure><img src="assets/people_3.jpg" alt="Colour and depth with people as purple silhouettes" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <section class="step" id="twin">
+    <div class="step-head"><div class="num">06</div>
+      <h2>Fuse a 3D digital twin <span class="status done">done</span></h2>
+      <p>Keyframes are fused into one coloured 3D model of the house, levelled so the floor is flat to within 0.05°. <a href="viewer/">Open the interactive 3D viewer</a> to orbit it yourself.</p>
+    </div>
+    <figure><video src="assets/twin_orbit.mp4" poster="assets/twin_orbit_poster.jpg" controls muted playsinline preload="none"></video>
+      <figcaption><b>Orbit around the fused scan</b> with the walkthrough path in 3D.</figcaption></figure>
+    <div class="media two">
+      <figure><img src="assets/07_twin_orbit.jpg" alt="Fused 3D scan of AGI House with walkthrough path" loading="lazy">
+        <figcaption><b>Fused scan</b> with the walkthrough path in 3D.</figcaption></figure>
+      <figure><img src="assets/before_after.jpg" alt="Floor plan before and after cleaning" loading="lazy">
+        <figcaption><b>Cleaning.</b> Ceiling, outliers and people removed before the floor plan is built.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="step" id="landmarks">
+    <div class="step-head"><div class="num">07</div>
+      <h2>Gemma names the places <span class="status done">done</span></h2>
+      <p>Gemma looks at the keyframes and names what it sees, then a second Gemma pass verifies each candidate. 18 landmarks survived, including the kitchen, restroom, stairs, bar, fireplace, couches and TVs. One false landmark was rejected: a "poker table" that was really a medallion in the floor. Each name is pinned to the map using the phone's depth, and its approach point is restricted to floor reachable from the entrance.</p>
+    </div>
+    <figure><img src="assets/landmarks.jpg" alt="Floor plan with landmarks named by Gemma" loading="lazy">
+      <figcaption><b>Landmarks on the floor plan.</b> Square = the object, dot = where the robot stands to reach it.</figcaption></figure>
+  </section>
+
+  <section class="step" id="robot">
+    <div class="step-head"><div class="num">08</div>
+      <h2>Run it on the real Booster K1 <span class="status wip">in progress</span></h2>
+      <p>Gemma runs on-device on our laptop, linked to the robot, and nothing calls the cloud. Running it directly on the K1's Jetson is a stretch goal we haven't verified. The robot localizes the same way as in the twin: odometry, corrected by matching its depth against the scanned floor plan. No AprilTags are used. You talk to Gemma, and it confirms the goal before the robot moves; the code enforces that. The robot gives spoken commentary as it walks.</p>
+    </div>
+    <div class="flow" aria-label="On-robot loop">
+      <span class="device">"Take me to the restroom"</span><i>→</i>
+      <span class="device">Robot localizes from wherever it stands</span><i>→</i>
+      <span class="device">Gemma 4 E2B on the laptop confirms the place</span><i>→</i>
+      <span class="device">A* route on the scan</span><i>→</i>
+      <span class="device">K1 walks, max 0.5 m/s</span><i>→</i>
+      <span class="device">Stereo depth matched to the map</span><i>→</i>
+      <span class="device">Gemma confirms arrival</span>
+    </div>
+    <ul class="plain">
+      <li><b>Demo:</b> drop the K1 somewhere in the house and ask for the restroom. The rehearsed entrance routes (restroom 19.7 m, kitchen 32.9 m) are the fallback.</li>
+      <li><b>Safety:</b> every command goes through a wrapper that caps speed at 0.5 m/s and allows at most one motion command per second.</li>
+    </ul>
+  </section>
+
+
+  <section class="step" id="how">
+    <div class="step-head"><div class="num">··</div>
+      <h2>How it works</h2>
+      <p>Two systems, like a person: Gemma does the thinking and talking (System 2), a fast navigator does the walking (System 1). Everything in the loop runs locally.</p>
+    </div>
+    <div class="flow" aria-label="Pipeline">
+      <span>Phone walkthrough</span><i>→</i><span>3D twin + floor plan</span><i>→</i><span class="device">Gemma names landmarks</span><i>→</i><span>Rehearse routes in MuJoCo</span>
+    </div>
+    <div class="flow" aria-label="Runtime loop">
+      <span class="device">Guest's voice + head camera</span><i>→</i><span class="device">Gemma 4 E2B on-device: understand, confirm</span><i>→</i><span class="device">Localize from depth</span><i>→</i><span class="device">A* route + drift correction</span><i>→</i><span class="device">Booster walking policy</span><i>→</i><span class="device">Spoken commentary</span>
+    </div>
+    <ul class="plain">
+      <li><b>Safety:</b> every motion goes through a wrapper capped at 0.5 m/s and one command per second; the real robot is designed to stop within 0.5 s if the laptop goes quiet (tested against the robot simulator, not yet on the K1).</li>
+      <li><b>Privacy:</b> people are masked out of the map at capture time; faces in shared images are blurred.</li>
+    </ul>
+  </section>
+
+  <section class="step" id="talk">
+    <div class="step-head"><div class="num">··</div>
+      <h2>Talk to it <span class="status done">works in the twin</span></h2>
+      <p>One more run, start to finish. The robot is dropped by a couch and doesn't know where it is, so it asks. Gemma, running on the laptop with no cloud, understands the guest, confirms the destination, and won't move until she says yes; the code enforces that. Then it walks her to the restroom, pointing out what's on either side.</p>
+    </div>
+    <figure><video src="assets/wayfinder_talk_restroom.mp4" poster="assets/wayfinder_talk_restroom.jpg" controls playsinline preload="none"></video>
+      <figcaption><b>Couch → Restroom, one continuous run.</b> <span class="label-sim">Simulation, real time; the guest's voice is synthesized.</span></figcaption></figure>
+  </section>
+</main>
+
+<footer class="wrap">
+  Built in one day at the Google Gemma Hardware Hackathon, AGI House, 24 October 2026. Mobile capture apps, mapping, landmarks and robot code are open source: <a href="https://github.com/bouncypitch/wayfinder">github.com/bouncypitch/wayfinder</a>. Gemma runs on-device on a laptop; nothing in the robot's loop calls the cloud.
+</footer>
+
+</body>
+</html>
