@@ -1,0 +1,17 @@
+{
+  "n": 5,
+  "title": "K1 walks entrance to restroom in the AGI House twin",
+  "note": "First rehearsal on the real scanned map: A* on the cleaned LiDAR occupancy grid, Booster's RL walking policy in MuJoCo follows 8 legs and arrives without touching a wall.",
+  "say": "From the front door to the restroom, 20 metres, rehearsed in the twin before the real robot takes a step.",
+  "metrics": {
+    "path_m": "19.7",
+    "sim_time_s": "65.6",
+    "result": "arrived"
+  },
+  "files": [
+    "route_restroom.png",
+    "rehearsal_restroom.png",
+    "rehearsal_restroom.gif"
+  ],
+  "time": "2026-10-24T15:06"
+}

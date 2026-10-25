@@ -1,0 +1,8 @@
+model=gemma4:e4b-it-qat image=runs/smoke_head.png think=False
+warm-up (loads weights) ...
+  cold: total 8.082s (load 5.48s)
+{"prompt": "Walk toward the red box in front of you.", "tool_calls": [{"name": "walk", "arguments": {"seconds": 2, "vx": 0.3}}], "text": "", "well_formed": true, "ttft_s": 1.834, "total_s": 1.856, "prompt_tokens": 589, "prompt_tok_per_s": 402.3, "gen_tokens": 17, "gen_tok_per_s": 46.6, "load_s": 0.01}
+{"prompt": "Someone just said hello to you. Greet them.", "tool_calls": [{"name": "wave", "arguments": {}}], "text": "", "well_formed": true, "ttft_s": 1.603, "total_s": 1.624, "prompt_tokens": 590, "prompt_tok_per_s": 402.2, "gen_tokens": 7, "gen_tok_per_s": 51.0, "load_s": 0.0}
+{"prompt": "Look to your left to check for obstacles.", "tool_calls": [{"name": "look", "arguments": {"pitch_deg": 0, "yaw_deg": 90}}], "text": "", "well_formed": true, "ttft_s": 1.848, "total_s": 1.87, "prompt_tokens": 588, "prompt_tok_per_s": 413.3, "gen_tokens": 20, "gen_tok_per_s": 46.6, "load_s": 0.0}
+{"prompt": "Danger! Something is in your way.", "tool_calls": [{"name": "look", "arguments": {"pitch_deg": 10, "yaw_deg": 0}}], "text": "", "well_formed": true, "ttft_s": 1.856, "total_s": 1.877, "prompt_tokens": 587, "prompt_tok_per_s": 410.1, "gen_tokens": 20, "gen_tok_per_s": 46.7, "load_s": 0.0}
+SUMMARY gemma4:e4b-it-qat: well_formed 4/4 | mean TTFT 1.79s | mean total 1.81s | decode 47.7 tok/s | prefill 407 tok/s

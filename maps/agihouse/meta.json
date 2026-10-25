@@ -1,0 +1,14 @@
+{
+  "origin": [
+    -29.302823781760793,
+    -6.696525329545141
+  ],
+  "res": 0.05,
+  "floor_z": 4.432587862713763e-06,
+  "shape": [
+    655,
+    694
+  ],
+  "scan": "/Users/kdotmahesh/Code/gemma-hack/maps/agihouse/clean.ply",
+  "up": "z"
+}

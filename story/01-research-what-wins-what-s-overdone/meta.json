@@ -1,0 +1,14 @@
+{
+  "n": 1,
+  "title": "Research: what wins, what's overdone",
+  "note": "Four research agents mapped the Gemma on-device stack, robot SDKs, physical prompt-injection prior art, and recent hackathon winners. Winners: one clear task for a named person, done live on real hardware. Overdone: blind narrators, chatbots, benchmark-only projects.",
+  "say": "We studied what won before and built for a real person: an elderly guest who needs a hand.",
+  "metrics": {
+    "research agents": "6",
+    "hackathons surveyed": "13"
+  },
+  "files": [
+    "RESEARCH.md"
+  ],
+  "time": "2026-10-23T21:00"
+}

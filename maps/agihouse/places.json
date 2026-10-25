@@ -1,0 +1,675 @@
+{
+  "start": {
+    "xy": [
+      -7.68,
+      0.98
+    ],
+    "yaw_deg": 90.0
+  },
+  "bar": {
+    "xy": [
+      -10.33,
+      17.43
+    ],
+    "kind": "landmark",
+    "landmark": "bar",
+    "object_xy": [
+      -10.53,
+      18.2
+    ],
+    "object_z": 0.85,
+    "desc": "a bar counter (stools, bottles, glasses)",
+    "sightings": 9,
+    "confidence": 0.97,
+    "first_seen_frame": 345,
+    "hero": "landmarks/bar.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.2,
+        0.27,
+        0.53
+      ],
+      "pos": [
+        -10.53,
+        18.2,
+        0.85
+      ],
+      "rgba": [
+        0.6,
+        0.3,
+        0.15,
+        1
+      ]
+    }
+  },
+  "cooktop": {
+    "xy": [
+      -6.83,
+      13.78
+    ],
+    "kind": "landmark",
+    "landmark": "cooktop",
+    "object_xy": [
+      -5.48,
+      14.86
+    ],
+    "object_z": 1.04,
+    "desc": "a stove or cooktop",
+    "sightings": 11,
+    "confidence": 0.97,
+    "first_seen_frame": 515,
+    "hero": "landmarks/cooktop.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.26,
+        0.28,
+        0.14
+      ],
+      "pos": [
+        -5.48,
+        14.86,
+        1.04
+      ],
+      "rgba": [
+        0.2,
+        0.2,
+        0.2,
+        1
+      ]
+    }
+  },
+  "couch": {
+    "xy": [
+      -3.03,
+      -1.57
+    ],
+    "kind": "landmark",
+    "landmark": "couch",
+    "object_xy": [
+      -0.76,
+      -1.87
+    ],
+    "object_z": 0.73,
+    "desc": "a couch or sofa",
+    "sightings": 7,
+    "confidence": 0.98,
+    "first_seen_frame": 890,
+    "hero": "landmarks/couch.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.56,
+        0.36,
+        0.34
+      ],
+      "pos": [
+        -0.76,
+        -1.87,
+        0.73
+      ],
+      "rgba": [
+        0.45,
+        0.45,
+        0.55,
+        1
+      ]
+    }
+  },
+  "couch_2": {
+    "xy": [
+      -20.33,
+      7.78
+    ],
+    "kind": "landmark",
+    "landmark": "couch",
+    "object_xy": [
+      -21.61,
+      8.67
+    ],
+    "object_z": 0.88,
+    "desc": "a couch or sofa",
+    "sightings": 5,
+    "confidence": 0.97,
+    "first_seen_frame": 175,
+    "hero": "landmarks/couch_2.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.26,
+        0.53,
+        0.25
+      ],
+      "pos": [
+        -21.61,
+        8.67,
+        0.88
+      ],
+      "rgba": [
+        0.45,
+        0.45,
+        0.55,
+        1
+      ]
+    }
+  },
+  "couch_3": {
+    "xy": [
+      -11.43,
+      6.18
+    ],
+    "kind": "landmark",
+    "landmark": "couch",
+    "object_xy": [
+      -11.62,
+      5.37
+    ],
+    "object_z": 0.66,
+    "desc": "a couch or sofa",
+    "sightings": 5,
+    "confidence": 0.96,
+    "first_seen_frame": 775,
+    "hero": "landmarks/couch_3.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.31,
+        0.19,
+        0.22
+      ],
+      "pos": [
+        -11.62,
+        5.37,
+        0.66
+      ],
+      "rgba": [
+        0.45,
+        0.45,
+        0.55,
+        1
+      ]
+    }
+  },
+  "dining_table": {
+    "xy": [
+      -3.73,
+      19.08
+    ],
+    "kind": "landmark",
+    "landmark": "dining_table",
+    "object_xy": [
+      -2.95,
+      18.91
+    ],
+    "object_z": 0.36,
+    "desc": "a dining table with chairs",
+    "sightings": 3,
+    "confidence": 0.98,
+    "first_seen_frame": 1150,
+    "hero": "landmarks/dining_table.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.39,
+        0.4,
+        0.33
+      ],
+      "pos": [
+        -2.95,
+        18.91,
+        0.36
+      ],
+      "rgba": [
+        0.75,
+        0.55,
+        0.35,
+        1
+      ]
+    }
+  },
+  "fireplace": {
+    "xy": [
+      -2.03,
+      17.53
+    ],
+    "kind": "landmark",
+    "landmark": "fireplace",
+    "object_xy": [
+      -1.24,
+      17.56
+    ],
+    "object_z": 0.82,
+    "desc": "a fireplace",
+    "sightings": 4,
+    "confidence": 0.99,
+    "first_seen_frame": 500,
+    "hero": "landmarks/fireplace.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.31,
+        0.53,
+        0.75
+      ],
+      "pos": [
+        -1.24,
+        17.56,
+        0.82
+      ],
+      "rgba": [
+        0.55,
+        0.25,
+        0.2,
+        1
+      ]
+    }
+  },
+  "fridge": {
+    "xy": [
+      -3.58,
+      11.68
+    ],
+    "kind": "landmark",
+    "landmark": "fridge",
+    "object_xy": [
+      -3.99,
+      10.99
+    ],
+    "object_z": 1.17,
+    "desc": "a refrigerator",
+    "sightings": 4,
+    "confidence": 0.96,
+    "first_seen_frame": 1180,
+    "hero": "landmarks/fridge.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.16,
+        0.09,
+        0.49
+      ],
+      "pos": [
+        -3.99,
+        10.99,
+        1.17
+      ],
+      "rgba": [
+        0.85,
+        0.87,
+        0.9,
+        1
+      ]
+    }
+  },
+  "front_entrance": {
+    "xy": [
+      -7.68,
+      0.98
+    ],
+    "kind": "landmark",
+    "landmark": "front_entrance",
+    "object_xy": [
+      -7.44,
+      1.73
+    ],
+    "object_z": 1.25,
+    "desc": "the house's front door / main entrance",
+    "sightings": 15,
+    "confidence": 0.97,
+    "first_seen_frame": 0,
+    "hero": "landmarks/front_entrance.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.3,
+        0.4,
+        1.04
+      ],
+      "pos": [
+        -7.44,
+        1.73,
+        1.25
+      ],
+      "rgba": [
+        0.55,
+        0.35,
+        0.2,
+        1
+      ]
+    }
+  },
+  "kitchen": {
+    "xy": [
+      -3.73,
+      15.63
+    ],
+    "kind": "landmark",
+    "landmark": "kitchen",
+    "object_xy": [
+      -4.26,
+      14.98
+    ],
+    "object_z": 0.69,
+    "desc": "the kitchen area (counter, sink, cabinets, fridge)",
+    "sightings": 12,
+    "confidence": 0.98,
+    "first_seen_frame": 505,
+    "hero": "landmarks/kitchen.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.69,
+        0.59,
+        0.55
+      ],
+      "pos": [
+        -4.26,
+        14.98,
+        0.69
+      ],
+      "rgba": [
+        0.9,
+        0.9,
+        0.88,
+        1
+      ]
+    }
+  },
+  "restroom": {
+    "xy": [
+      -10.33,
+      14.53
+    ],
+    "kind": "landmark",
+    "landmark": "restroom",
+    "object_xy": [
+      -9.56,
+      14.73
+    ],
+    "object_z": 1.11,
+    "desc": "a restroom or bathroom door, or a toilet / bathroom sink",
+    "sightings": 3,
+    "confidence": 0.99,
+    "first_seen_frame": 365,
+    "hero": "landmarks/restroom.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.27,
+        0.38,
+        1.04
+      ],
+      "pos": [
+        -9.56,
+        14.73,
+        1.11
+      ],
+      "rgba": [
+        0.3,
+        0.6,
+        0.95,
+        1
+      ]
+    }
+  },
+  "restroom_2": {
+    "xy": [
+      -11.98,
+      15.23
+    ],
+    "kind": "landmark",
+    "landmark": "restroom",
+    "object_xy": [
+      -12.53,
+      15.81
+    ],
+    "object_z": 1.64,
+    "desc": "a restroom or bathroom door, or a toilet / bathroom sink",
+    "sightings": 3,
+    "confidence": 0.98,
+    "first_seen_frame": 350,
+    "hero": "landmarks/restroom_2.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.12,
+        0.38,
+        0.76
+      ],
+      "pos": [
+        -12.53,
+        15.81,
+        1.64
+      ],
+      "rgba": [
+        0.3,
+        0.6,
+        0.95,
+        1
+      ]
+    }
+  },
+  "stairs": {
+    "xy": [
+      -8.03,
+      9.88
+    ],
+    "kind": "landmark",
+    "landmark": "stairs",
+    "object_xy": [
+      -7.8,
+      10.74
+    ],
+    "object_z": 1.17,
+    "desc": "a staircase",
+    "sightings": 6,
+    "confidence": 0.98,
+    "first_seen_frame": 715,
+    "hero": "landmarks/stairs.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.58,
+        0.48,
+        0.73
+      ],
+      "pos": [
+        -7.8,
+        10.74,
+        1.17
+      ],
+      "rgba": [
+        0.6,
+        0.5,
+        0.4,
+        1
+      ]
+    }
+  },
+  "trash_can": {
+    "xy": [
+      -14.08,
+      4.78
+    ],
+    "kind": "landmark",
+    "landmark": "trash_can",
+    "object_xy": [
+      -14.7,
+      5.26
+    ],
+    "object_z": 0.41,
+    "desc": "a trash can or recycling bin",
+    "sightings": 13,
+    "confidence": 0.97,
+    "first_seen_frame": 35,
+    "hero": "landmarks/trash_can.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.42,
+        0.27,
+        0.32
+      ],
+      "pos": [
+        -14.7,
+        5.26,
+        0.41
+      ],
+      "rgba": [
+        0.2,
+        0.5,
+        0.25,
+        1
+      ]
+    }
+  },
+  "trash_can_2": {
+    "xy": [
+      -1.53,
+      13.38
+    ],
+    "kind": "landmark",
+    "landmark": "trash_can",
+    "object_xy": [
+      -1.14,
+      12.68
+    ],
+    "object_z": 0.5,
+    "desc": "a trash can or recycling bin",
+    "sightings": 3,
+    "confidence": 0.95,
+    "first_seen_frame": 1180,
+    "hero": "landmarks/trash_can_2.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.23,
+        0.35,
+        0.49
+      ],
+      "pos": [
+        -1.14,
+        12.68,
+        0.5
+      ],
+      "rgba": [
+        0.2,
+        0.5,
+        0.25,
+        1
+      ]
+    }
+  },
+  "trash_can_3": {
+    "xy": [
+      -10.93,
+      17.38
+    ],
+    "kind": "landmark",
+    "landmark": "trash_can",
+    "object_xy": [
+      -11.84,
+      18.02
+    ],
+    "object_z": 0.43,
+    "desc": "a trash can or recycling bin",
+    "sightings": 3,
+    "confidence": 0.93,
+    "first_seen_frame": 375,
+    "hero": "landmarks/trash_can_3.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.27,
+        0.22,
+        0.16
+      ],
+      "pos": [
+        -11.84,
+        18.02,
+        0.43
+      ],
+      "rgba": [
+        0.2,
+        0.5,
+        0.25,
+        1
+      ]
+    }
+  },
+  "tv": {
+    "xy": [
+      -14.98,
+      1.68
+    ],
+    "kind": "landmark",
+    "landmark": "tv",
+    "object_xy": [
+      -16.11,
+      1.52
+    ],
+    "object_z": 1.97,
+    "desc": "a television / large screen",
+    "sightings": 4,
+    "confidence": 0.97,
+    "first_seen_frame": 48,
+    "hero": "landmarks/tv.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.49,
+        0.07,
+        0.35
+      ],
+      "pos": [
+        -16.11,
+        1.52,
+        1.97
+      ],
+      "rgba": [
+        0.1,
+        0.1,
+        0.12,
+        1
+      ]
+    }
+  },
+  "tv_2": {
+    "xy": [
+      -17.83,
+      8.53
+    ],
+    "kind": "landmark",
+    "landmark": "tv",
+    "object_xy": [
+      -17.83,
+      7.72
+    ],
+    "object_z": 1.06,
+    "desc": "a television / large screen",
+    "sightings": 3,
+    "confidence": 0.96,
+    "first_seen_frame": 250,
+    "hero": "landmarks/tv_2.jpg",
+    "sim": {
+      "shape": "box",
+      "size": [
+        0.49,
+        0.28,
+        0.42
+      ],
+      "pos": [
+        -17.83,
+        7.72,
+        1.06
+      ],
+      "rgba": [
+        0.1,
+        0.1,
+        0.12,
+        1
+      ]
+    }
+  }
+}

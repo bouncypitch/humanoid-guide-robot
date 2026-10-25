@@ -1,0 +1,14 @@
+{
+  "origin": [
+    -0.6,
+    -0.6
+  ],
+  "res": 0.05,
+  "floor_z": -0.01,
+  "shape": [
+    144,
+    184
+  ],
+  "scan": "/Users/kdotmahesh/Code/gemma-hack/scans/synth_room.obj",
+  "up": "y"
+}

@@ -1,0 +1,47 @@
+{
+  "floor_tilt_deg": 0.051,
+  "floor_offset_m": 1.087,
+  "vertices_in": 956692,
+  "dropped_height": 324371,
+  "dropped_outliers": 5534,
+  "small_components_removed": 881,
+  "walls_protected": 0,
+  "object_points_removed": 0,
+  "vertices_out": 615591,
+  "triangles_out": 1131711,
+  "grid_builder": "scan_map.build",
+  "occupied_cells_before": 39289,
+  "occupied_cells_after": 37168,
+  "occupied_cells_cleared": 1771,
+  "occupied_removed_pct": 4.51,
+  "removed_person": 0,
+  "removed_clutter": 0,
+  "removed_objects": [],
+  "semistatic_objects": 0,
+  "level_transform": [
+    [
+      1.0,
+      -0.0,
+      -0.000884,
+      0.0
+    ],
+    [
+      -0.0,
+      1.0,
+      -9.6e-05,
+      0.0
+    ],
+    [
+      0.000884,
+      9.6e-05,
+      1.0,
+      1.086608
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ]
+}

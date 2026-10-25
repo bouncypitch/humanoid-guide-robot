@@ -1,0 +1,18 @@
+{
+  "n": 4,
+  "title": "Scan to floor plan to rehearsal in the twin",
+  "note": "A 3D scan becomes a floor plan with a safety margin for the robot's body. A* plans a route, and the simulated K1 rehearses it before the real robot moves. Tested on a synthetic hallway, living room and kitchen.",
+  "say": "Every route is rehearsed in a digital twin before the real robot takes a step.",
+  "metrics": {
+    "route": "6.3 m, 2 legs",
+    "rehearsal": "arrived",
+    "sim time": "19.4 s",
+    "compute time": "~5 s"
+  },
+  "files": [
+    "route_kitchen.png",
+    "rehearsal.png",
+    "rehearsal.gif"
+  ],
+  "time": "2026-10-24T10:50"
+}

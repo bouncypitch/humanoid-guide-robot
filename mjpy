@@ -1,0 +1,5 @@
+#!/bin/zsh
+# mjpython wrapper: uv's standalone Python needs its libpython on the dyld path for the MuJoCo viewer.
+HERE=${0:A:h}
+export DYLD_LIBRARY_PATH="$($HERE/.venv/bin/python -c 'import sysconfig;print(sysconfig.get_config_var("LIBDIR"))')"
+exec "$HERE/.venv/bin/mjpython" "$@"

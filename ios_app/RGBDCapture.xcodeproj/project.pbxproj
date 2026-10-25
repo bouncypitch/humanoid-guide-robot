@@ -1,0 +1,443 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		064C49C2A0861C0E00F0CEC8 /* RGBDCaptureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54376F6402D144DCB3133E2E /* RGBDCaptureApp.swift */; };
+		0BBE1AF654AFB9379B7DED36 /* ImageEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126AE7037D624DD56FCAF607 /* ImageEncoding.swift */; };
+		23FF8F80F90BA041FF14D43E /* ImageEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126AE7037D624DD56FCAF607 /* ImageEncoding.swift */; };
+		2626E3F09B004A4CECC2E94A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAACBE5A640A3F1770608B6B /* ContentView.swift */; };
+		3F2366461C0503766C48090F /* CaptureMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B084CC8362E8794197020445 /* CaptureMath.swift */; };
+		605E9E23E8181F43BCB776D0 /* CaptureMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B084CC8362E8794197020445 /* CaptureMath.swift */; };
+		7D489791D5CDC6720368D2B0 /* RoomScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48C731EB4011F5C9BC0F144 /* RoomScan.swift */; };
+		87606FC62739BCE749F09FB6 /* CaptureMathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802836D0C27232919379AD4D /* CaptureMathTests.swift */; };
+		87E89D58FDD680E6A680BF07 /* CaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2A046B607708DE5B5F1B2B /* CaptureManager.swift */; };
+		89F3DAF3A63C6E870A9F98A1 /* SessionZipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2600DFFAB8AD5CBF7C3E1D /* SessionZipper.swift */; };
+		B364BEA82D234BAC3D0DA62B /* EncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F30BD0947D16F75E8522E86 /* EncodingTests.swift */; };
+		C1E077B6EF5832429AEF489C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 751F9C3B807AD6F692C0099B /* Assets.xcassets */; };
+		DB2FEF31C27307794DE025FB /* SessionZipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2600DFFAB8AD5CBF7C3E1D /* SessionZipper.swift */; };
+		E76874B68A354D5FDA08E988 /* LiveStreamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371E173E7BDC9461F99ADE7C /* LiveStreamer.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		126AE7037D624DD56FCAF607 /* ImageEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEncoding.swift; sourceTree = "<group>"; };
+		371E173E7BDC9461F99ADE7C /* LiveStreamer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamer.swift; sourceTree = "<group>"; };
+		54376F6402D144DCB3133E2E /* RGBDCaptureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBDCaptureApp.swift; sourceTree = "<group>"; };
+		56849A1010B6E7151A24BC4A /* RGBDCapture.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = RGBDCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		751F9C3B807AD6F692C0099B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7B2600DFFAB8AD5CBF7C3E1D /* SessionZipper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionZipper.swift; sourceTree = "<group>"; };
+		802836D0C27232919379AD4D /* CaptureMathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureMathTests.swift; sourceTree = "<group>"; };
+		8F30BD0947D16F75E8522E86 /* EncodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodingTests.swift; sourceTree = "<group>"; };
+		B084CC8362E8794197020445 /* CaptureMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureMath.swift; sourceTree = "<group>"; };
+		B52FE420216600E601DABDAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BF2A046B607708DE5B5F1B2B /* CaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureManager.swift; sourceTree = "<group>"; };
+		CC9BB53D1142DB70EF2A1BCA /* RGBDCaptureTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = RGBDCaptureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F48C731EB4011F5C9BC0F144 /* RoomScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomScan.swift; sourceTree = "<group>"; };
+		FAACBE5A640A3F1770608B6B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		182630E497E421C64D9A0981 /* RGBDCapture */ = {
+			isa = PBXGroup;
+			children = (
+				751F9C3B807AD6F692C0099B /* Assets.xcassets */,
+				BF2A046B607708DE5B5F1B2B /* CaptureManager.swift */,
+				B084CC8362E8794197020445 /* CaptureMath.swift */,
+				FAACBE5A640A3F1770608B6B /* ContentView.swift */,
+				126AE7037D624DD56FCAF607 /* ImageEncoding.swift */,
+				B52FE420216600E601DABDAF /* Info.plist */,
+				371E173E7BDC9461F99ADE7C /* LiveStreamer.swift */,
+				54376F6402D144DCB3133E2E /* RGBDCaptureApp.swift */,
+				F48C731EB4011F5C9BC0F144 /* RoomScan.swift */,
+				7B2600DFFAB8AD5CBF7C3E1D /* SessionZipper.swift */,
+			);
+			path = RGBDCapture;
+			sourceTree = "<group>";
+		};
+		696A885A7F08B70C335AAD4D /* RGBDCaptureTests */ = {
+			isa = PBXGroup;
+			children = (
+				802836D0C27232919379AD4D /* CaptureMathTests.swift */,
+				8F30BD0947D16F75E8522E86 /* EncodingTests.swift */,
+			);
+			path = RGBDCaptureTests;
+			sourceTree = "<group>";
+		};
+		B8F50C25995F91EF915B7211 = {
+			isa = PBXGroup;
+			children = (
+				182630E497E421C64D9A0981 /* RGBDCapture */,
+				696A885A7F08B70C335AAD4D /* RGBDCaptureTests */,
+				FC6587326B4E694943BFB8AB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FC6587326B4E694943BFB8AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				56849A1010B6E7151A24BC4A /* RGBDCapture.app */,
+				CC9BB53D1142DB70EF2A1BCA /* RGBDCaptureTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3A41E9C8D86B52886ED709B1 /* RGBDCaptureTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B7FB6E24F53B6A59ABDB106 /* Build configuration list for PBXNativeTarget "RGBDCaptureTests" */;
+			buildPhases = (
+				464D88DAE85FAACD4D047CF1 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RGBDCaptureTests;
+			packageProductDependencies = (
+			);
+			productName = RGBDCaptureTests;
+			productReference = CC9BB53D1142DB70EF2A1BCA /* RGBDCaptureTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A223180AD4B49DF6FB30EEA6 /* RGBDCapture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A33C2A3AD18B5ED31122A31 /* Build configuration list for PBXNativeTarget "RGBDCapture" */;
+			buildPhases = (
+				FD43C51546C7422608016DE9 /* Sources */,
+				BCBA23C16FBD01A4387D8340 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RGBDCapture;
+			packageProductDependencies = (
+			);
+			productName = RGBDCapture;
+			productReference = 56849A1010B6E7151A24BC4A /* RGBDCapture.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C3CF1BD3105CC9D05B51E823 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					3A41E9C8D86B52886ED709B1 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					A223180AD4B49DF6FB30EEA6 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A58D8C73C28B6EAE0499889B /* Build configuration list for PBXProject "RGBDCapture" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = B8F50C25995F91EF915B7211;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = FC6587326B4E694943BFB8AB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A223180AD4B49DF6FB30EEA6 /* RGBDCapture */,
+				3A41E9C8D86B52886ED709B1 /* RGBDCaptureTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BCBA23C16FBD01A4387D8340 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1E077B6EF5832429AEF489C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		464D88DAE85FAACD4D047CF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				605E9E23E8181F43BCB776D0 /* CaptureMath.swift in Sources */,
+				87606FC62739BCE749F09FB6 /* CaptureMathTests.swift in Sources */,
+				B364BEA82D234BAC3D0DA62B /* EncodingTests.swift in Sources */,
+				0BBE1AF654AFB9379B7DED36 /* ImageEncoding.swift in Sources */,
+				DB2FEF31C27307794DE025FB /* SessionZipper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD43C51546C7422608016DE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E89D58FDD680E6A680BF07 /* CaptureManager.swift in Sources */,
+				3F2366461C0503766C48090F /* CaptureMath.swift in Sources */,
+				2626E3F09B004A4CECC2E94A /* ContentView.swift in Sources */,
+				23FF8F80F90BA041FF14D43E /* ImageEncoding.swift in Sources */,
+				E76874B68A354D5FDA08E988 /* LiveStreamer.swift in Sources */,
+				064C49C2A0861C0E00F0CEC8 /* RGBDCaptureApp.swift in Sources */,
+				7D489791D5CDC6720368D2B0 /* RoomScan.swift in Sources */,
+				89F3DAF3A63C6E870A9F98A1 /* SessionZipper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		117A8A576DD1E24D7FD372A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		24BC8DC9BA9B9D5FFB35E92B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kdotmahesh.rgbdcapture.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		414A4E61824F93B33BC28FC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = RGBDCapture/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "RGBD Capture";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kdotmahesh.rgbdcapture;
+				PRODUCT_NAME = RGBDCapture;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		6628EC09BDFFD7B88CEC18A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		843CAEE899B8AF9373514E38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = RGBDCapture/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "RGBD Capture";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kdotmahesh.rgbdcapture;
+				PRODUCT_NAME = RGBDCapture;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		CFB7B8693AC4FE755E570964 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kdotmahesh.rgbdcapture.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8B7FB6E24F53B6A59ABDB106 /* Build configuration list for PBXNativeTarget "RGBDCaptureTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24BC8DC9BA9B9D5FFB35E92B /* Debug */,
+				CFB7B8693AC4FE755E570964 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9A33C2A3AD18B5ED31122A31 /* Build configuration list for PBXNativeTarget "RGBDCapture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				843CAEE899B8AF9373514E38 /* Debug */,
+				414A4E61824F93B33BC28FC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A58D8C73C28B6EAE0499889B /* Build configuration list for PBXProject "RGBDCapture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				117A8A576DD1E24D7FD372A9 /* Debug */,
+				6628EC09BDFFD7B88CEC18A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C3CF1BD3105CC9D05B51E823 /* Project object */;
+}

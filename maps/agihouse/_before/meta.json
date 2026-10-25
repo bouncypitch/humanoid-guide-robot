@@ -1,0 +1,14 @@
+{
+  "origin": [
+    -29.32748714196965,
+    -6.696525329545141
+  ],
+  "res": 0.05,
+  "floor_z": -0.006471781849155764,
+  "shape": [
+    656,
+    695
+  ],
+  "scan": "/Users/kdotmahesh/Code/gemma-hack/maps/agihouse/leveled_raw.ply",
+  "up": "z"
+}

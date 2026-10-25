@@ -1,0 +1,1 @@
+poker_table  # hero crop is the foyer floor medallion, not the felt table

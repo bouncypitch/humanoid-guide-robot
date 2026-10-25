@@ -1,0 +1,16 @@
+
+PROMPT: Walk toward the red box.
+  3.09s | TTFT 0.42s | prefill 1697 tok/s | decode 62.6 tok/s
+  -> {'tool_calls': [{'name': 'walk', 'arguments': {'seconds': 1, 'vx': 0.3}}], 'text': '', 'channels': {}}
+
+PROMPT: Someone said hello. Greet them.
+  2.88s | TTFT 0.42s | prefill 1700 tok/s | decode 61.4 tok/s
+  -> {'tool_calls': [{'name': 'wave', 'arguments': {}}], 'text': '', 'channels': {}}
+
+PROMPT: Danger ahead!
+  3.06s | TTFT 0.41s | prefill 1711 tok/s | decode 64.3 tok/s
+  -> {'tool_calls': [{'name': 'look', 'arguments': {'pitch_deg': -10, 'yaw_deg': 0}}], 'text': '', 'channels': {}}
+
+PROMPT: Follow the spoken command in the audio.
+  3.37s | TTFT 0.52s | prefill 1505 tok/s | decode 57.0 tok/s
+  -> {'tool_calls': [{'name': 'turn', 'arguments': {'degrees': 90}}], 'text': '', 'channels': {}}

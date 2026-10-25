@@ -1,0 +1,16 @@
+{
+  "n": 3,
+  "title": "The K1 walks in its MuJoCo twin",
+  "note": "Booster's own RL walking policy drives a simulated K1 in MuJoCo, using the same velocity commands as the real robot. A head camera lets Gemma see what the robot sees.",
+  "say": "We build in simulation first, with the exact walking policy the real robot uses.",
+  "metrics": {
+    "walk": "2 m @ 0.5 m/s",
+    "turn accuracy": "87\u00b0 of 90\u00b0",
+    "falls": "0"
+  },
+  "files": [
+    "smoke_head.png",
+    "smoke_chase_wave.png"
+  ],
+  "time": "2026-10-23T23:00"
+}

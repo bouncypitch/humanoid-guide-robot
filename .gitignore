@@ -1,0 +1,40 @@
+# --- privacy: anything with photos of the house or the people in it stays local ---
+captures/
+scans/
+marble_inputs/
+videos/
+runs/
+logs/
+maps/agihouse/landmarks/
+maps/agihouse/*.jsonl
+maps/agihouse/landmarks_obs.json
+maps/agihouse/landmarks_verify.json
+maps/agihouse/clean.ply
+maps/agihouse/*.gif
+story/*/snapshot.tar.gz
+# --- large / third-party ---
+models/
+reference/
+booster_assets/
+booster_deploy/
+booster_robotics_sdk/
+.venv*/
+__pycache__/
+*.rrd
+android_app/**/build/
+android_app/.gradle/
+ios_app/**/DerivedData/
+tools/faces
+.DS_Store
+# --- more privacy / size (pre-publish review) ---
+maps/agihouse/*.ply
+maps/agihouse/*.npz.bak
+scans/**
+docs/booster_doc.*
+android_app/local.properties
+story/*/*.mp4
+*.aiff
+*.wav
+maps/stanford_*/
+maps/session_fake*/
+maps/agihouse/.verify.jpg
