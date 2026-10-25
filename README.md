@@ -5,7 +5,7 @@ A talking humanoid robot that escorts elderly guests anywhere in the house.
 
 ![The K1 walking a guest from the front door to the kitchen in the AGI House digital twin](docs/media/wayfinder_walk.gif)
 
-<!-- 3-minute demo video: attach as a GitHub Release asset and link it here -->
+**▶ [Watch the 3-minute demo video](https://github.com/bouncypitch/wayfinder/releases/download/v1.0-hackathon/wayfinder_demo_video.mp4)** (simulation in the scanned AGI House twin; voices synthesized)
 
 | One phone walkthrough becomes a 3D twin | People are masked out of the map | Drop it anywhere: 23/30 arrive |
 |---|---|---|
